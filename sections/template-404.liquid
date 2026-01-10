@@ -1,1 +1,23 @@
-hello
+<h1>{{ 'general.404.title' | t }}</h1>
+
+<h6>{{ 'general.404.subtext_html' | t }}</h6>
+
+{% schema %}
+{
+  "name": "Template 404",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "404",
+      "label": "404 Heading Title"
+    },
+    {
+      "type": "text",
+      "id": "subtext_title",
+      "default": "The page you were looking for could not be found.",
+      "label": "404 Subtext Title"
+    }
+  ]
+}
+{% endschema %}
