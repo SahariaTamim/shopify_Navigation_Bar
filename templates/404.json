@@ -12,8 +12,8 @@
     "template": {
       "type": "template-404",
       "settings": {
-        "title": "404 hello",
-        "subtext_title": "hello"
+        "title": "404",
+        "subtext_title": "This is 404 page "
       }
     }
   },
