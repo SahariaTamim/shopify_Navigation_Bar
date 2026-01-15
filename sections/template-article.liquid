@@ -11,7 +11,6 @@
             {% when 'article_author' %}
                 <div class="flex items-center justify-center">
                     <div class="max-w-7xl text-center" itemscope itemtype="http://schema.org/Person">
-                    
                         {% if section.settings.enable_author %}
                             <small itemprop="author">{{ article.author }}</small>
                         {% endif %}
@@ -28,7 +27,7 @@
             {% when 'featured_image' %}
                 <div itemprop="image" class="max-w-7xl bg-blue-100 rounded-lg mx-2 md:mx-auto overflow-hidden my-4">
                     {% if article.image != blank %}
-                        <img class="w-80 h-50 md:h-96 object-cover object-center" src="{{ article.image | image_url: 'large'}}" alt="{{ article.image.alt }}" width="1024" height="768">
+                        <img class="w-full h-80 md:h-96 object-cover object-center" src="{{ article.image | img_url: 'large'}}" alt="{{ article.image.alt }}">
                     {% else %}
                         {% assign placeholder_image = 'lifestyle-1' %}
                         {{ placeholder_image | placeholder_svg_tag: 'w-full h-80 md:h-96 object-cover object-center p-5' }}
@@ -142,53 +141,47 @@
 
 {% schema %}
 {
-  "name": "Template Article",
-  "settings": [
-    {
-      "type": "checkbox",
-      "id": "enable_author",
-      "default": true,
-      "label": "Show Author Name"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_published_date",
-      "default": true,
-      "label": "Display Published Date"
-    },
-    {
-      "type": "checkbox",
-      "id": "content_text",
-      "default": true,
-      "label": "Hide content"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "articel_title",
-      "name": "Title",
-      "limit": 1
-    },
-    {
-      "type": "article_author",
-      "name": "Author",
-      "limit": 1
-    },
-    {
-      "type": "article_published_date",
-      "name": "published_date",
-      "limit": 1
-    },
-    {
-      "type": "featured_image",
-      "name": "Thumbnail",
-      "limit": 1
-    },
-    {
-      "type": "article_content",
-      "name": "Content",
-      "limit": 1
-    }
-  ]
+    "name": "Template Article",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "enable_author",
+            "default": true,
+            "label": "Display Author Name"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_published_date",
+            "default": true,
+            "label": "Display Published Date"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "article_title",
+            "name": "Title",
+            "limit": 1
+        },
+        {
+            "type": "article_author",
+            "name": "Author",
+            "limit": 1
+        },
+        {
+            "type": "article_published_date",
+            "name": "Published Date",
+            "limit": 1
+        },
+        {
+            "type": "featured_image",
+            "name": "Thumbnail",
+            "limit": 1
+        },
+        {
+            "type": "article_content",
+            "name": "Content",
+            "limit": 1
+        }
+    ]
 }
 {% endschema %}
